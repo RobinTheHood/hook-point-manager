@@ -14,7 +14,7 @@ Search for: `robinthehood/hook-point-manager`
 ## How to use
 
 ### Default Hook Points (recommended)
-In this example you can create hook points from the directory */new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/DefaultHookPoints/*. It's better to look here for a hook point or make a pull request to add a new hook point:
+This example shows you how to add all default hook points to modifieds core files. It's always better to look for a default hook point and use a default one or make a pull request to add a new default hook point:
 
 ```php
 use RobinTheHood\HookPointManager\Classes\HookPointManager;
@@ -24,8 +24,13 @@ $hookPointManager->registerDefault();
 $hookPointManager->update();
 ```
 
+After that you can use all default hook points.
+
+#### Add a new default hook point
+If you need a new default hook point, you can add one. First check whether there is already a default hook point that fits you needs. To add a new default hook point go to the directory */new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/DefaultHookPoints/* and add your new hook point there. After that you have to make a pull request, so that every user and developer can use your new hook point. 
+
 ### Create your own very special Hook Point (not recommended)
-If you need a very special hook point, you can create your own without a Pull Request. This hook point is only usable for you, your projects and your module. This is **not recommended** if you can avoid it with a default hook point. You can find default hook points in */new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/DefaultHookPoints/* or add a new default hook point with a pull request. If you still need your very super special hook point you can use the following code:
+If you need a very special hook point, you can create your own without a Pull Request. For example: because no one wants your new default pull request hook point and your pull request is refused 😢🥺. This hook point is only usable for you, your projects and your module. This is **not recommended** if you can avoid it with a default hook point. You can find default hook points in */new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/DefaultHookPoints/* or add a new default hook point with a pull request. If you still need your very super special hook point you can use the following code:
 
 ```php
 $hookPointManager = new HookPointManager();
