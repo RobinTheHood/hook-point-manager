@@ -24,8 +24,8 @@ $hookPointManager->registerDefault();
 $hookPointManager->update();
 ```
 
-### Create own very special Hook Point (not recommended)
-If you need a very special hook point, you can create your own without a Pull Request. This hook point is only usable for you, your projects and your module. This is **not recommended** if you can avoid it with a default hook point. You can finde default hook points in *.../DefaultHookPoints/* or add a new default hook point with a pull request. If you still need your very super special hook point you can use the following code:
+### Create your own very special Hook Point (not recommended)
+If you need a very special hook point, you can create your own without a Pull Request. This hook point is only usable for you, your projects and your module. This is **not recommended** if you can avoid it with a default hook point. You can find default hook points in *.../DefaultHookPoints/* or add a new default hook point with a pull request. If you still need your very super special hook point you can use the following code:
 
 ```php
 $hookPointManager = new HookPointManager();
