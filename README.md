@@ -14,7 +14,7 @@ Search for: `robinthehood/hook-point-manager`
 ## How to use
 
 ### Default Hook Points (recommended)
-In this example you can create hook points from the directory *.../DefaultHookPoints/*. It's better to look here for a hook point or make a pull request to add a new hook point:
+In this example you can create hook points from the directory */new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/DefaultHookPoints/*. It's better to look here for a hook point or make a pull request to add a new hook point:
 
 ```php
 use RobinTheHood\HookPointManager\Classes\HookPointManager;
@@ -25,7 +25,7 @@ $hookPointManager->update();
 ```
 
 ### Create your own very special Hook Point (not recommended)
-If you need a very special hook point, you can create your own without a Pull Request. This hook point is only usable for you, your projects and your module. This is **not recommended** if you can avoid it with a default hook point. You can find default hook points in *.../DefaultHookPoints/* or add a new default hook point with a pull request. If you still need your very super special hook point you can use the following code:
+If you need a very special hook point, you can create your own without a Pull Request. This hook point is only usable for you, your projects and your module. This is **not recommended** if you can avoid it with a default hook point. You can find default hook points in */new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/DefaultHookPoints/* or add a new default hook point with a pull request. If you still need your very super special hook point you can use the following code:
 
 ```php
 $hookPointManager = new HookPointManager();
@@ -46,7 +46,7 @@ $hookPointManager->registerHookPoint([
 | index   | description                                          | example value                       |
 |---------|------------------------------------------------------|-------------------------------------|
 | name    | unique name of the hook point                        | mc-my-hook-point-name               |
-| module  | module name of hook poit creator                     | my-company/my-first-module          |
+| module  | module name of hook point creator                     | my-company/my-first-module          |
 | file    | file path in which the hook point is to be installed | /create_account.php                 |
 | hash    | md5-Hash of original unmodified file                 | 2b5ce65ba6177ed24c805609b28572a7    |
 | line    | line after which the hook point is to be installed   | 30                                  |
