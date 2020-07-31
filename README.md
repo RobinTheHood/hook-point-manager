@@ -11,8 +11,9 @@ You can install this module with the [Modified Module Loader Client (MMLC)](http
 
 Search for: `robinthehood/hook-point-manager`
 
-## How to use (recommended)
+## How to use
 
+### Default Hook Points (recommended)
 In this example you can create hook points from the directory *.../DefaultHookPoints/*. It's better to look here for a hook point or make a pull request to add a new hook point:
 
 ```php
