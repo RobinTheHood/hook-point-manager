@@ -58,3 +58,6 @@ $hookPointManager->registerHookPoint([
 | include | auto_include directory for the hook point files      | /includes/extra/.../create_account/ |
 
 ### HookPointManager::registerHookPoint(array $hookPoint, array $versions)
+
+## TODO
+- [ ] New Methods to restore all original core files or/and unregister a or all hook-points. (I think it's not that hard to program it)
