@@ -75,17 +75,17 @@ class HookPointManager
         $orgFilePath = str_replace('.php', '.hpmorg.php', $filePath);
 
         if (!file_exists($filePath)) {
-            //throw new \RuntimeException("Can not create original file $orgFilePath because $filePath not exsits.");
+            // throw new \RuntimeException("Can not create original file $orgFilePath because $filePath not exsits.");
             $this->addError("Can not create original file $orgFilePath because $filePath not exsits.");
             return;
         }
-
+        
         if (file_exists($orgFilePath)) {
             return;
         }
-    
+
         if (md5(file_get_contents($filePath)) != $hash) {
-            //    throw new \RuntimeException("Can not create original file $orgFilePath out of $filePath because file hash dose not match.");
+            // throw new \RuntimeException("Can not create original file $orgFilePath out of $filePath because file hash dose not match.");
             $this->addError("Can not create original file $orgFilePath out of $filePath because file hash dose not match.");
             return;
         }
