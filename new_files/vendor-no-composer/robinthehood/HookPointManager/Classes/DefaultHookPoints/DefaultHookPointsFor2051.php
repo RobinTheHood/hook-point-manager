@@ -74,5 +74,13 @@ class DefaultHookPointsFor2051
             'include' => '/admin/includes/extra/hpm/new_product/buttons/'
         ], $modifiedVersions);
         
+        $hookPointManager->registerHookPoint([
+            'name' => 'hpm-default-define-conditions-top',
+            'module' => 'robinthehood/hook-point-manager',
+            'file' => '/includes/define_conditions.php',
+            'hash' => 'ebe43f505e41720c0ccbc5ad27a6eac9',
+            'line' => 12,
+            'include' => '/includes/extra/hpm/define-conditions/top/'
+        ], $modifiedVersions);
     }
 }

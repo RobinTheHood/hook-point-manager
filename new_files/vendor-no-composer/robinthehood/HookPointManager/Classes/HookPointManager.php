@@ -34,6 +34,7 @@ class HookPointManager
 
     public function registerDefault()
     {
+        (new DefaultHookPoints\DefaultHookPointsFor2030)->registerAll();
         (new DefaultHookPoints\DefaultHookPointsFor2051)->registerAll();
     }
 
