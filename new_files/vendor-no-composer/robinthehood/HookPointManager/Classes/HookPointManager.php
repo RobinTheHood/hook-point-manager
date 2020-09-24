@@ -105,6 +105,17 @@ class HookPointManager
             return;
         }
 
+        // Test hashes
+        $hash = md5(file_get_contents($orgFilePath));
+        foreach ($fileHookPoints as $hookPoint) {
+            if ($hookPoint['hash'] != $hash) {
+                $hookPointName = $hookPoint['name'];
+                // throw new \RuntimeException("Can install $hookPointName in $filePath because file hash dose not match.");
+                $this->addError("Can install $hookPointName in $filePath because file hash dose not match with original file.");
+                return;
+            }
+        }
+
         $fileContent = file_get_contents($orgFilePath);
         $lines = explode("\n", $fileContent);
 
