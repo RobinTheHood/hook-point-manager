@@ -13,7 +13,7 @@ class ShopInfo
     {
         $fileThatMustExist = '/admin/includes/version.php';
 
-        // Check if file is isntalled as copy
+        // Check if file is installed as copy
         // .../SHOP-ROOT/vendor-no-composer/robinthehood/HookPointManager/Classes/"
         $path = realPath(__DIR__ . '/../../../../');
         $testPath = $path . $fileThatMustExist;
@@ -21,7 +21,7 @@ class ShopInfo
             return $path;
         }
 
-        // Check if file is installd as symlink
+        // Check if file is installed as symlink
         // .../SHOP-ROOT/ModifiedModuleLoaderClient/Modules/robinthehood/hook-point-manager/new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/"
         $path = realPath(__DIR__ . '/../../../../../../../../../');
         $testPath = $path . $fileThatMustExist;
