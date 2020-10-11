@@ -144,7 +144,7 @@ class HookPointManager
         $code .= " * From Module: $module" . "\n";
         $code .= " * HookPointName: $name" . "\n";
         $code .= " */" . "\n";
-        $code .= "foreach(auto_include(DIR_FS_CATALOG . '$includePath','php') as \$file) require_once (\$file);" . "\n";
+        $code .= "foreach(auto_include(DIR_FS_CATALOG . '$includePath','php') as \$file) require (\$file);" . "\n";
         $code .= "/* robinthehood/hook-point-manager END */" . "\n";
         return $code;
     }
