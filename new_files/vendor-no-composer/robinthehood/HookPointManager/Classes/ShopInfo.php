@@ -3,9 +3,33 @@ namespace RobinTheHood\HookPointManager\Classes;
 
 class ShopInfo
 {
+    /**
+     * Returns the path of the shop root directory
+     * 
+     * Notice: __DIR__ and __FILE__ can not handle symlinks. Both magic constants paths are resolved.
+     * That's why we have to test both cases.
+     */
     public static function getShopRoot(): string
     {
-        return realPath(__DIR__ . '/../../../../../../../../../');
+        $fileThatMustExist = '/admin/includes/version.php';
+
+        // Check if file is isntalled as copy
+        // .../SHOP-ROOT/vendor-no-composer/robinthehood/HookPointManager/Classes/"
+        $path = realPath(__DIR__ . '/../../../../');
+        $testPath = $path . $fileThatMustExist;
+        if (\file_exists($testPath)) {
+            return $path;
+        }
+
+        // Check if file is installd as symlink
+        // .../SHOP-ROOT/ModifiedModuleLoaderClient/Modules/robinthehood/hook-point-manager/new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/"
+        $path = realPath(__DIR__ . '/../../../../../../../../../');
+        $testPath = $path . $fileThatMustExist;
+        if (\file_exists($testPath)) {
+            return $path;
+        }
+
+        throw new RuntimeException('Can not find and resolve ShopRoot');
     }
 
     /**
