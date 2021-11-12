@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\HookPointManager\Classes\DefaultHookPoints;
 
 use RobinTheHood\HookPointManager\Classes\HookPointManager;
@@ -24,7 +25,7 @@ class DefaultHookPointsFor2030
         $modifiedVersions = ['2.0.3.0'];
 
         $hookPointManager = new HookPointManager();
-        
+
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-define-conditions-top',
             'module' => 'robinthehood/hook-point-manager',

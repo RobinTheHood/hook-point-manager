@@ -1,11 +1,12 @@
 <?php
+
 namespace RobinTheHood\HookPointManager\Classes;
 
 class ShopInfo
 {
     /**
      * Returns the path of the shop root directory
-     * 
+     *
      * Notice: __DIR__ and __FILE__ can not handle symlinks. Both magic constants paths are resolved.
      * That's why we have to test both cases.
      */

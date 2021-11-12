@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\HookPointManager\Classes\DefaultHookPoints;
 
 use RobinTheHood\HookPointManager\Classes\HookPointManager;
@@ -30,7 +31,7 @@ class DefaultHookPointsFor2060
             'module' => 'robinthehood/hook-point-manager',
             'file' => '/api/autocomplete/autocomplete.php',
             'hash' => 'ae82ab388defe37a76e1ffc1658f3d3f',
-            'line' => 78,  
+            'line' => 78,
             'include' => '/includes/extra/hpm/api/autocomplete/prepare_sql/'
         ], $modifiedVersions);
     }

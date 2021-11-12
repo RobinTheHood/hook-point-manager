@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\HookPointManager\Classes;
 
 class HookPointManager
@@ -16,7 +17,7 @@ class HookPointManager
     {
         $hookPointRepository = new HookPointRepository();
 
-        foreach($versions as $version) {
+        foreach ($versions as $version) {
             $hookPoint['version'] = $version;
 
             if ($hookPointRepository->getHookPointByNameAndVersion($hookPoint['name'], $hookPoint['version'])) {
@@ -50,7 +51,7 @@ class HookPointManager
     public function updateHookPoints($hookPoints)
     {
         $groupedHookPoints = $this->groupHookPointsByFile($hookPoints);
-        
+
         foreach ($groupedHookPoints as $fileHookPoints) {
             $relativeFilePath = $fileHookPoints[0]['file'];
             $hash = $fileHookPoints[0]['hash'];
@@ -80,7 +81,7 @@ class HookPointManager
             $this->addError("Can not create original file $orgFilePath because $filePath not exsits.");
             return;
         }
-        
+
         if (file_exists($orgFilePath)) {
             return;
         }
@@ -119,11 +120,11 @@ class HookPointManager
         $fileContent = file_get_contents($orgFilePath);
         $lines = explode("\n", $fileContent);
 
-        foreach($fileHookPoints as $hookPoint) {
+        foreach ($fileHookPoints as $hookPoint) {
             $name = $hookPoint['name'] ?? 'unknown-hook-point-name';
             $line = $hookPoint['line'];
             $indexName = $line . ':' . $name;
-            $lines = ArrayHelper::insertAfter($lines, $line-1, $indexName, $this->createAutoIncludeCode($hookPoint, $orgFilePath));
+            $lines = ArrayHelper::insertAfter($lines, $line - 1, $indexName, $this->createAutoIncludeCode($hookPoint, $orgFilePath));
         }
 
         $newFileContent = implode("\n", $lines);
