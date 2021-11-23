@@ -21,10 +21,26 @@ class ShopInfo
         if (\file_exists($testPath)) {
             return $path;
         }
-
+        
+        // Check if file is installed as copy + version path
+        // .../SHOP-ROOT/vendor-no-composer/robinthehood/HookPointManager/VERSION/Classes/"
+        $path = realPath(__DIR__ . '/../../../../../');
+        $testPath = $path . $fileThatMustExist;
+        if (\file_exists($testPath)) {
+            return $path;
+        }
+        
         // Check if file is installed as symlink
         // .../SHOP-ROOT/ModifiedModuleLoaderClient/Modules/robinthehood/hook-point-manager/new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/"
         $path = realPath(__DIR__ . '/../../../../../../../../../');
+        $testPath = $path . $fileThatMustExist;
+        if (\file_exists($testPath)) {
+            return $path;
+        }
+        
+        // Check if file is installed as symlink + version path
+        // .../SHOP-ROOT/ModifiedModuleLoaderClient/Modules/robinthehood/hook-point-manager\VERSION\new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/"
+        $path = realPath(__DIR__ . '/../../../../../../../../../../');
         $testPath = $path . $fileThatMustExist;
         if (\file_exists($testPath)) {
             return $path;
