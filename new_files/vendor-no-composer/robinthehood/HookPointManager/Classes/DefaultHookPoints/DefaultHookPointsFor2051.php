@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\HookPointManager\Classes\DefaultHookPoints;
 
 use RobinTheHood\HookPointManager\Classes\HookPointManager;

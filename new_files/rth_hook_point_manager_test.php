@@ -1,4 +1,5 @@
 <?php
+
 die('You have not permission to do this test.'); // die(),because we do not allow unauthorized to execute this script
 
 use RobinTheHood\HookPointManager\Classes\HookPointManager;

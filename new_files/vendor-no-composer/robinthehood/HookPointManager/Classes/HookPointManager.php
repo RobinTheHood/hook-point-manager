@@ -4,7 +4,6 @@ namespace RobinTheHood\HookPointManager\Classes;
 
 class HookPointManager
 {
-
     protected $errors = [];
 
     public function __construct()
@@ -30,14 +29,13 @@ class HookPointManager
 
     public function unregisterHookPoint()
     {
-
     }
 
     public function registerDefault()
     {
-        (new DefaultHookPoints\DefaultHookPointsFor2030)->registerAll();
-        (new DefaultHookPoints\DefaultHookPointsFor2051)->registerAll();
-        (new DefaultHookPoints\DefaultHookPointsFor2060)->registerAll();
+        (new DefaultHookPoints\DefaultHookPointsFor2030())->registerAll();
+        (new DefaultHookPoints\DefaultHookPointsFor2051())->registerAll();
+        (new DefaultHookPoints\DefaultHookPointsFor2060())->registerAll();
     }
 
     public function update()
@@ -140,7 +138,7 @@ class HookPointManager
         $includePath = $hookPoint['include'] ?? '/includes/etra/hpm/unknown_hook_point/';
 
         $code = "/* *** robinthehood/hook-point-manager START ***" . "\n";
-        $code .= " * This is a automatically generated file with new hook points." . "\n"; 
+        $code .= " * This is a automatically generated file with new hook points." . "\n";
         $code .= " * You can find the original unmodified file at: $orgFilePath" . "\n";
         $code .= " *" . "\n";
         $code .= " * From Module: $module" . "\n";
