@@ -2,6 +2,8 @@
 
 namespace RobinTheHood\HookPointManager\Classes;
 
+use RuntimeException;
+
 class ShopInfo
 {
     /**
