@@ -149,12 +149,12 @@ class HookPointManager
         return $code;
     }
 
-    public function addError($error)
+    public function addError(string $error): void
     {
         $this->errors[] = $error;
     }
 
-    public function getErrors()
+    public function getErrors(): array
     {
         return $this->errors;
     }
