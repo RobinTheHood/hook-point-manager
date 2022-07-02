@@ -123,7 +123,8 @@ class HookPointManager
             $name = $hookPoint['name'] ?? 'unknown-hook-point-name';
             $line = $hookPoint['line'];
             $indexName = $line . ':' . $name;
-            $lines = ArrayHelper::insertAfter($lines, $line - 1, $indexName, $this->createAutoIncludeCode($hookPoint, $orgFilePath));
+            $autoIncludeCode = $this->createAutoIncludeCode($hookPoint, $orgFilePath);
+            $lines = ArrayHelper::insertAfter($lines, $line - 1, $indexName, $autoIncludeCode);
         }
 
         $newFileContent = implode("\n", $lines);
