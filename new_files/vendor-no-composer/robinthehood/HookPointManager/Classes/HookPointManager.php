@@ -158,6 +158,12 @@ class HookPointManager
         file_put_contents($filePath, $newFileContent);
     }
 
+    public function removeAllHookPointsFromFile(string $relativeFilePath): void
+    {
+        $emptyHookPointList = [];
+        $this->insertHookPointsToFile($relativeFilePath, $emptyHookPointList);
+    }
+
     public function createAutoIncludeCode(array $hookPoint, string $orgFilePath): string
     {
         $name = $hookPoint['name'] ?? 'unknown-hook-point-name';
