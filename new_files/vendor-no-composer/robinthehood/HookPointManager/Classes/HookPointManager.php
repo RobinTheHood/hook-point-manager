@@ -51,7 +51,24 @@ class HookPointManager
         $this->updateHookPoints($hookPoints);
     }
 
-    public function updateHookPoints($hookPoints)
+    /**
+     * Removes all HookPoints from all files. Dones not delete HookPoints database entries,
+     * so you can reinstall all HookPoints via update().
+     */
+    public function remove(): void
+    {
+        $hookPointRepository = new HookPointRepository();
+        $hookPoints = $hookPointRepository->getAllHookPoints();
+
+        $groupedHookPoints = $this->groupHookPointsByFile($hookPoints);
+
+        foreach ($groupedHookPoints as $fileHookPoints) {
+            $relativeFilePath = $fileHookPoints[0]['file'];
+            $this->removeAllHookPointsFromFile($relativeFilePath);
+        }
+    }
+
+    public function updateHookPoints(array $hookPoints): void
     {
         $groupedHookPoints = $this->groupHookPointsByFile($hookPoints);
 
