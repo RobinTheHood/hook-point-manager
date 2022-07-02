@@ -27,7 +27,7 @@ class HookPointManager
         }
     }
 
-    public function unregisterHookPoint()
+    public function unregisterHookPoint(string $hookPointName)
     {
     }
 
@@ -38,7 +38,11 @@ class HookPointManager
         (new DefaultHookPoints\DefaultHookPointsFor2060())->registerAll();
     }
 
-    public function update()
+    /**
+     * Installs or updates all in database registered HookPoints to files. Only registered
+     * HookPoints will be installed, so you have to register a HookPoint to database first.
+     */
+    public function update(): void
     {
         $modifiedVersion = ShopInfo::getModifiedVersion();
         $hookPointRepository = new HookPointRepository();
@@ -59,7 +63,7 @@ class HookPointManager
         }
     }
 
-    public function groupHookPointsByFile($hookPoints)
+    public function groupHookPointsByFile(array $hookPoints): array
     {
         $groupedHookPoints = [];
         foreach ($hookPoints as $hookPoint) {
@@ -70,7 +74,7 @@ class HookPointManager
     }
 
     //TODO: only copy when file-hash is equal
-    public function createBackupFile($relativeFilePath, $hash)
+    public function createBackupFile(string $relativeFilePath, string $hash): void
     {
         $filePath = ShopInfo::getShopRoot() . $relativeFilePath;
         $orgFilePath = str_replace('.php', '.hpmorg.php', $filePath);
@@ -94,7 +98,12 @@ class HookPointManager
         copy($filePath, $orgFilePath);
     }
 
-    public function insertHookPointsToFile($relativeFilePath, $fileHookPoints)
+    /**
+     * Insert a list of HookPoints to a file. The base file is always the original file. This method
+     * does not append a HookPoint to a file with alreay added HookPoints. In the end you can only find
+     * the HookPoints in $fileHookPoints in the result file.
+     */
+    public function insertHookPointsToFile(string $relativeFilePath, array $fileHookPoints): void
     {
         $filePath = ShopInfo::getShopRoot() . $relativeFilePath;
         $orgFilePath = str_replace('.php', '.hpmorg.php', $filePath);
