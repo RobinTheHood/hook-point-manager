@@ -20,7 +20,7 @@ use RobinTheHood\HookPointManager\Classes\HookPointManager;
 
 class DefaultHookPointsFor2030
 {
-    public function registerAll()
+    public function registerAll(): void
     {
         $modifiedVersions = ['2.0.3.0'];
 
@@ -36,7 +36,7 @@ class DefaultHookPointsFor2030
         ], $modifiedVersions);
     }
 
-    public function unregisterAll()
+    public function unregisterAll(): void
     {
         $hookPointManager = new HookPointManager();
         $hookPointManager->unregisterHookPoint('hpm-default-define-conditions-top');

@@ -20,7 +20,7 @@ use RobinTheHood\HookPointManager\Classes\HookPointManager;
 
 class DefaultHookPointsFor2070
 {
-    public function registerAll()
+    public function registerAll(): void
     {
         $modifiedVersions = ['2.0.7.0'];
 
