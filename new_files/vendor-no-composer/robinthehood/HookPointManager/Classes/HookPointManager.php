@@ -47,6 +47,11 @@ class HookPointManager
         (new DefaultHookPoints\DefaultHookPointsFor2060())->registerAll();
     }
 
+    public function unregisterDefault(): void
+    {
+        (new DefaultHookPoints\DefaultHookPointsFor2030())->unregisterAll();
+    }
+
     /**
      * Installs or updates all in database registered HookPoints to files. Only registered
      * HookPoints will be installed, so you have to register a HookPoint to database first.
