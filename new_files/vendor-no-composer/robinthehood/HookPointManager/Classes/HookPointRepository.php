@@ -4,7 +4,7 @@ namespace RobinTheHood\HookPointManager\Classes;
 
 class HookPointRepository
 {
-    public function createTableRthHookPointIfNotExists()
+    public function createTableRthHookPointIfNotExists(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS `rth_hook_point` (
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -41,7 +41,7 @@ class HookPointRepository
         $query = xtc_db_query($sql);
     }
 
-    public function updateHookPoint($hookPoint)
+    public function updateHookPoint(array $hookPoint): void
     {
         $version = $hookPoint['version'] ?? '';
         $module = $hookPoint['module'] ?? '';

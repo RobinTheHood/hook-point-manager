@@ -12,7 +12,11 @@ class HookPointManager
         $hookPointRepository->createTableRthHookPointIfNotExists();
     }
 
-    public function registerHookPoint($hookPoint, $versions)
+    /**
+     * @param array $hookPoint
+     * @param string[] $versions
+     */
+    public function registerHookPoint(array $hookPoint, array $versions): void
     {
         $hookPointRepository = new HookPointRepository();
 
@@ -27,11 +31,16 @@ class HookPointManager
         }
     }
 
-    public function unregisterHookPoint(string $hookPointName)
+    /**
+     * @param string $hookPointName
+     */
+    public function unregisterHookPoint(string $hookPointName): void
     {
+        $hookPointRepository = new HookPointRepository();
+        $hookPointRepository->deleteHookPointByName($hookPointName);
     }
 
-    public function registerDefault()
+    public function registerDefault(): void
     {
         (new DefaultHookPoints\DefaultHookPointsFor2030())->registerAll();
         (new DefaultHookPoints\DefaultHookPointsFor2051())->registerAll();
