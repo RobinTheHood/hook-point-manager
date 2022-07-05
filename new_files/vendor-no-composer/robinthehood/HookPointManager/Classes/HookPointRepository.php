@@ -4,7 +4,7 @@ namespace RobinTheHood\HookPointManager\Classes;
 
 class HookPointRepository
 {
-    public function createTableRthHookPointIfNotExists()
+    public function createTableRthHookPointIfNotExists(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS `rth_hook_point` (
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -41,7 +41,7 @@ class HookPointRepository
         $query = xtc_db_query($sql);
     }
 
-    public function updateHookPoint($hookPoint)
+    public function updateHookPoint(array $hookPoint): void
     {
         $version = $hookPoint['version'] ?? '';
         $module = $hookPoint['module'] ?? '';
@@ -68,6 +68,18 @@ class HookPointRepository
         $query = xtc_db_query($sql);
     }
 
+    public function getAllHookPoints(): array
+    {
+        $sql = "SELECT * FROM rth_hook_point";
+        $query = xtc_db_query($sql);
+
+        $hookPoints = [];
+        while ($row = xtc_db_fetch_array($query)) {
+            $hookPoints[] = $row;
+        }
+        return $hookPoints;
+    }
+
     public function getHookPointByNameAndVersion(string $name, string $version): ?array
     {
         $sql = "SELECT * FROM rth_hook_point WHERE name='$name' AND version='$version';";
@@ -87,5 +99,11 @@ class HookPointRepository
             $hookPoints[] = $row;
         }
         return $hookPoints;
+    }
+
+    public function deleteHookPointByName(string $name): void
+    {
+        $sql = "DELETE FROM WHERE name='$name'";
+        $query = xtc_db_query($sql);
     }
 }

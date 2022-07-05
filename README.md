@@ -16,15 +16,28 @@ Search for: `robinthehood/hook-point-manager`
 ### Default Hook Points (recommended)
 This example shows you how to add all default hook points to modifieds core files. It's always better to look for a default hook point and use a default one or make a pull request to add a new default hook point:
 
+### Register and add default Hook Points
 ```php
 use RobinTheHood\HookPointManager\Classes\HookPointManager;
 
 $hookPointManager = new HookPointManager();
-$hookPointManager->registerDefault();
-$hookPointManager->update();
+$hookPointManager->registerDefault(); // adds default Hook Points to database
+$hookPointManager->update(); // writes Hook Points to files
 ```
 
 After that you can use all default hook points.
+
+
+### Remove all Hook Points
+```php
+use RobinTheHood\HookPointManager\Classes\HookPointManager;
+
+$hookPointManager = new HookPointManager();
+$hookPointManager->remove(); // removes Hook Points from files
+$hookPointManager->unregisterDefault(); // removes default Hook Points from database
+```
+
+After that all default hook points are removed.
 
 #### Add a new default hook point
 If you need a new default hook point, you can add one. First check whether there is already a default hook point that fits you needs. To add a new default hook point go to the directory */new_files/vendor-no-composer/robinthehood/HookPointManager/Classes/DefaultHookPoints/* and add your new hook point there. After that you have to make a pull request, so that every user and developer can use your new hook point. 
@@ -58,6 +71,3 @@ $hookPointManager->registerHookPoint([
 | include | auto_include directory for the hook point files      | /includes/extra/.../create_account/ |
 
 ### HookPointManager::registerHookPoint(array $hookPoint, array $versions)
-
-## TODO
-- [ ] New Methods to restore all original core files or/and unregister a or all hook-points. (I think it's not that hard to program it)

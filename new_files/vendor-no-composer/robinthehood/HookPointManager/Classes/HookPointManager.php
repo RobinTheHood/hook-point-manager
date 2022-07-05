@@ -12,7 +12,11 @@ class HookPointManager
         $hookPointRepository->createTableRthHookPointIfNotExists();
     }
 
-    public function registerHookPoint($hookPoint, $versions)
+    /**
+     * @param array $hookPoint
+     * @param string[] $versions
+     */
+    public function registerHookPoint(array $hookPoint, array $versions): void
     {
         $hookPointRepository = new HookPointRepository();
 
@@ -27,18 +31,32 @@ class HookPointManager
         }
     }
 
-    public function unregisterHookPoint()
+    /**
+     * @param string $hookPointName
+     */
+    public function unregisterHookPoint(string $hookPointName): void
     {
+        $hookPointRepository = new HookPointRepository();
+        $hookPointRepository->deleteHookPointByName($hookPointName);
     }
 
-    public function registerDefault()
+    public function registerDefault(): void
     {
         (new DefaultHookPoints\DefaultHookPointsFor2030())->registerAll();
         (new DefaultHookPoints\DefaultHookPointsFor2051())->registerAll();
         (new DefaultHookPoints\DefaultHookPointsFor2060())->registerAll();
     }
 
-    public function update()
+    public function unregisterDefault(): void
+    {
+        (new DefaultHookPoints\DefaultHookPointsFor2030())->unregisterAll();
+    }
+
+    /**
+     * Installs or updates all in database registered HookPoints to files. Only registered
+     * HookPoints will be installed, so you have to register a HookPoint to database first.
+     */
+    public function update(): void
     {
         $modifiedVersion = ShopInfo::getModifiedVersion();
         $hookPointRepository = new HookPointRepository();
@@ -47,7 +65,24 @@ class HookPointManager
         $this->updateHookPoints($hookPoints);
     }
 
-    public function updateHookPoints($hookPoints)
+    /**
+     * Removes all registered HookPoints from all files. Does not delete HookPoints database entries,
+     * so you can reinstall all HookPoints via update().
+     */
+    public function remove(): void
+    {
+        $hookPointRepository = new HookPointRepository();
+        $hookPoints = $hookPointRepository->getAllHookPoints();
+
+        $groupedHookPoints = $this->groupHookPointsByFile($hookPoints);
+
+        foreach ($groupedHookPoints as $fileHookPoints) {
+            $relativeFilePath = $fileHookPoints[0]['file'];
+            $this->removeAllHookPointsFromFile($relativeFilePath);
+        }
+    }
+
+    public function updateHookPoints(array $hookPoints): void
     {
         $groupedHookPoints = $this->groupHookPointsByFile($hookPoints);
 
@@ -59,7 +94,7 @@ class HookPointManager
         }
     }
 
-    public function groupHookPointsByFile($hookPoints)
+    public function groupHookPointsByFile(array $hookPoints): array
     {
         $groupedHookPoints = [];
         foreach ($hookPoints as $hookPoint) {
@@ -70,7 +105,7 @@ class HookPointManager
     }
 
     //TODO: only copy when file-hash is equal
-    public function createBackupFile($relativeFilePath, $hash)
+    public function createBackupFile(string $relativeFilePath, string $hash): void
     {
         $filePath = ShopInfo::getShopRoot() . $relativeFilePath;
         $orgFilePath = str_replace('.php', '.hpmorg.php', $filePath);
@@ -94,7 +129,12 @@ class HookPointManager
         copy($filePath, $orgFilePath);
     }
 
-    public function insertHookPointsToFile($relativeFilePath, $fileHookPoints)
+    /**
+     * Insert a list of HookPoints to a file. The base file is always the original file. This method
+     * does not append a HookPoint to a file with already added HookPoints. In the end you can only find
+     * the HookPoints from $fileHookPoints in the result file.
+     */
+    public function insertHookPointsToFile(string $relativeFilePath, array $fileHookPoints): void
     {
         $filePath = ShopInfo::getShopRoot() . $relativeFilePath;
         $orgFilePath = str_replace('.php', '.hpmorg.php', $filePath);
@@ -130,6 +170,12 @@ class HookPointManager
         $newFileContent = implode("\n", $lines);
 
         file_put_contents($filePath, $newFileContent);
+    }
+
+    public function removeAllHookPointsFromFile(string $relativeFilePath): void
+    {
+        $emptyHookPointList = [];
+        $this->insertHookPointsToFile($relativeFilePath, $emptyHookPointList);
     }
 
     public function createAutoIncludeCode(array $hookPoint, string $orgFilePath): string

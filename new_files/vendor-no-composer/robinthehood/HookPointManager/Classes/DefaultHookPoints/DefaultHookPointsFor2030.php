@@ -35,4 +35,10 @@ class DefaultHookPointsFor2030
             'include' => '/includes/extra/hpm/define-conditions/top/'
         ], $modifiedVersions);
     }
+
+    public function unregisterAll()
+    {
+        $hookPointManager = new HookPointManager();
+        $hookPointManager->unregisterHookPoint('hpm-default-define-conditions-top');
+    }
 }
