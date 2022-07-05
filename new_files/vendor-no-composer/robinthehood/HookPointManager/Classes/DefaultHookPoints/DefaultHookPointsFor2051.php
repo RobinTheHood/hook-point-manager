@@ -26,6 +26,10 @@ class DefaultHookPointsFor2051
 
         $hookPointManager = new HookPointManager();
 
+        /**
+         * /create_account.php
+         */
+
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-create-account-prepare-data',
             'module' => 'robinthehood/hook-point-manager',
@@ -35,6 +39,9 @@ class DefaultHookPointsFor2051
             'include' => '/includes/extra/hpm/create_account/prepare_data/'
         ], $modifiedVersions);
 
+        /**
+         * /create_guest_account.php
+         */
 
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-create-guest-account-prepare-data',
@@ -45,6 +52,21 @@ class DefaultHookPointsFor2051
             'include' => '/includes/extra/hpm/create_guest_account/prepare_data/'
         ], $modifiedVersions);
 
+        /**
+         * /includes/define_conditions.php
+         */
+        $hookPointManager->registerHookPoint([
+            'name' => 'hpm-default-define-conditions-top',
+            'module' => 'robinthehood/hook-point-manager',
+            'file' => '/includes/define_conditions.php',
+            'hash' => 'ebe43f505e41720c0ccbc5ad27a6eac9',
+            'line' => 12,
+            'include' => '/includes/extra/hpm/define-conditions/top/'
+        ], $modifiedVersions);
+
+        /**
+         * /admin/includes/modules/categories_view.php
+         */
 
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-admin-categories-view-small-buttons',
@@ -65,6 +87,9 @@ class DefaultHookPointsFor2051
             'include' => '/admin/includes/extra/hpm/categories_view/side_buttons/'
         ], $modifiedVersions);
 
+        /**
+         * /admin/includes/modules/new_product.php
+         */
 
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-admin-new-product-buttons',
@@ -73,15 +98,6 @@ class DefaultHookPointsFor2051
             'hash' => 'f5bce50f35a1c99224b32cc64fbbfa3f',
             'line' => 242,
             'include' => '/admin/includes/extra/hpm/new_product/buttons/'
-        ], $modifiedVersions);
-
-        $hookPointManager->registerHookPoint([
-            'name' => 'hpm-default-define-conditions-top',
-            'module' => 'robinthehood/hook-point-manager',
-            'file' => '/includes/define_conditions.php',
-            'hash' => 'ebe43f505e41720c0ccbc5ad27a6eac9',
-            'line' => 12,
-            'include' => '/includes/extra/hpm/define-conditions/top/'
         ], $modifiedVersions);
     }
 }
