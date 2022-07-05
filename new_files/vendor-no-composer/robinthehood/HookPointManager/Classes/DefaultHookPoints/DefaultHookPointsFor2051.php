@@ -100,4 +100,15 @@ class DefaultHookPointsFor2051
             'include' => '/includes/extra/hpm/define-conditions/top/'
         ], $modifiedVersions);
     }
+
+    public function unregisterAll(): void
+    {
+        $hookPointManager = new HookPointManager();
+        $hookPointManager->unregisterHookPoint('hpm-default-create-account-prepare-data');
+        $hookPointManager->unregisterHookPoint('hpm-default-create-guest-account-prepare-data');
+        $hookPointManager->unregisterHookPoint('hpm-default-admin-categories-view-small-buttons');
+        $hookPointManager->unregisterHookPoint('hpm-default-admin-categories-view-side-buttons');
+        $hookPointManager->unregisterHookPoint('hpm-default-admin-new-product-buttons');
+        $hookPointManager->unregisterHookPoint('hpm-default-define-conditions-top');
+    }
 }
