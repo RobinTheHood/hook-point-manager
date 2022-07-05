@@ -45,6 +45,7 @@ class HookPointManager
         (new DefaultHookPoints\DefaultHookPointsFor2030())->registerAll();
         (new DefaultHookPoints\DefaultHookPointsFor2051())->registerAll();
         (new DefaultHookPoints\DefaultHookPointsFor2060())->registerAll();
+        (new DefaultHookPoints\DefaultHookPointsFor2070())->registerAll();
     }
 
     public function unregisterDefault(): void
