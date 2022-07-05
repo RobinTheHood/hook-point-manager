@@ -68,6 +68,18 @@ class HookPointRepository
         $query = xtc_db_query($sql);
     }
 
+    public function getAllHookPoints(): array
+    {
+        $sql = "SELECT * FROM rth_hook_point";
+        $query = xtc_db_query($sql);
+
+        $hookPoints = [];
+        while ($row = xtc_db_fetch_array($query)) {
+            $hookPoints[] = $row;
+        }
+        return $hookPoints;
+    }
+
     public function getHookPointByNameAndVersion(string $name, string $version): ?array
     {
         $sql = "SELECT * FROM rth_hook_point WHERE name='$name' AND version='$version';";
