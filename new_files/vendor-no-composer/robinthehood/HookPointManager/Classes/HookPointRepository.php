@@ -100,4 +100,10 @@ class HookPointRepository
         }
         return $hookPoints;
     }
+
+    public function deleteHookPointByName(string $name): void
+    {
+        $sql = "DELETE FROM WHERE name='$name'";
+        $query = xtc_db_query($sql);
+    }
 }
