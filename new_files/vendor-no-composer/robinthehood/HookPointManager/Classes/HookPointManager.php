@@ -52,7 +52,7 @@ class HookPointManager
     }
 
     /**
-     * Removes all HookPoints from all files. Dones not delete HookPoints database entries,
+     * Removes all registered HookPoints from all files. Does not delete HookPoints database entries,
      * so you can reinstall all HookPoints via update().
      */
     public function remove(): void
@@ -117,8 +117,8 @@ class HookPointManager
 
     /**
      * Insert a list of HookPoints to a file. The base file is always the original file. This method
-     * does not append a HookPoint to a file with alreay added HookPoints. In the end you can only find
-     * the HookPoints in $fileHookPoints in the result file.
+     * does not append a HookPoint to a file with already added HookPoints. In the end you can only find
+     * the HookPoints from $fileHookPoints in the result file.
      */
     public function insertHookPointsToFile(string $relativeFilePath, array $fileHookPoints): void
     {
