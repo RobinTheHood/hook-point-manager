@@ -27,9 +27,9 @@ class DefaultHookPointsFor2071
         $hookPointManager = new HookPointManager();
 
         /**
-         * /create_account.php
+         * Before:
+         * if ($error == false) {
          */
-
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-create-account-prepare-data',
             'module' => 'robinthehood/hook-point-manager',
@@ -40,9 +40,9 @@ class DefaultHookPointsFor2071
         ], $modifiedVersions);
 
         /**
-         * /create_guest_account.php
+         * Before:
+         * if ($error == false) {
          */
-
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-create-guest-account-prepare-data',
             'module' => 'robinthehood/hook-point-manager',
@@ -53,9 +53,10 @@ class DefaultHookPointsFor2071
         ], $modifiedVersions);
 
         /**
-         * /admin/includes/modules/categories_view.php
+         * Before:
+         * // check product and attributes stock
+         * if (STOCK_CHECK == 'true') { ?>
          */
-
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-admin-categories-view-small-buttons',
             'module' => 'robinthehood/hook-point-manager',
@@ -66,6 +67,12 @@ class DefaultHookPointsFor2071
         ], $modifiedVersions);
 
 
+        /**
+         * After:
+         * $buttons_new_elements .= '<a class="button" onclick="this.blur()" href="' .
+         * xtc_href_link(FILENAME_CATEGORIES, xtc_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) .
+         * 'cPath=' . $cPath . '&action=new_product') . '">' . BUTTON_NEW_PRODUCTS . '</a><br /><br />';
+         */
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-admin-categories-view-side-buttons',
             'module' => 'robinthehood/hook-point-manager',
@@ -76,9 +83,10 @@ class DefaultHookPointsFor2071
         ], $modifiedVersions);
 
         /**
-         * /admin/includes/modules/new_product.php
+         * After:
+         * echo '&nbsp;<input type="submit" class="button" name="prod_update"
+         * value="'.BUTTON_UPDATE.'" '.$confirm_save_entry.'/>';
          */
-
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-admin-new-product-buttons',
             'module' => 'robinthehood/hook-point-manager',
@@ -89,7 +97,8 @@ class DefaultHookPointsFor2071
         ], $modifiedVersions);
 
         /**
-         * /api/autocomplete/autocomplete.php
+         * Before:
+         * $autocomplete_search_query = xtc_db_query($autocomplete_search_query);
          */
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-autocomplete-prepare-sql',
@@ -101,7 +110,8 @@ class DefaultHookPointsFor2071
         ], $modifiedVersions);
 
         /**
-         * /includes/define_conditions.php
+         * Before:
+         * // for short lines :)
          */
         $hookPointManager->registerHookPoint([
             'name' => 'hpm-default-define-conditions-top',
