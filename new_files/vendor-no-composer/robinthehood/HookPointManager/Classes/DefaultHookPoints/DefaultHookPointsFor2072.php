@@ -5,7 +5,7 @@ namespace RobinTheHood\HookPointManager\Classes\DefaultHookPoints;
 use RobinTheHood\HookPointManager\Classes\HookPointManager;
 
 /*
-    *** Default Hook Points for Modified 2.0.7.1 ***
+    *** Default Hook Points for Modified 2.0.7.2 ***
     You can add new hook points by making a pull request in https://github.com/RobinTheHood/hook-point-manager
 
     index   | description                                           | example value
@@ -18,11 +18,11 @@ use RobinTheHood\HookPointManager\Classes\HookPointManager;
     include | auto_include directory for the hook point files       | /includes/extra/hpm/create_account/prepare_data/
  */
 
-class DefaultHookPointsFor2071
+class DefaultHookPointsFor2072
 {
     public function registerAll(): void
     {
-        $modifiedVersions = ['2.0.7.1'];
+        $modifiedVersions = ['2.0.7.2'];
 
         $hookPointManager = new HookPointManager();
 
