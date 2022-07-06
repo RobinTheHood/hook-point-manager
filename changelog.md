@@ -4,6 +4,9 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ## [Unreleased]
 Unveröffentlichte Features und Fixes können auf GitHub eingesehen werden. Klicke hierfür auf [Unreleased].
 
+### Changed
+- Fix: Fehlende Kompatibilität mit modified 2.0.7.1 und 2.0.7.2 in moduleinfo.json ergänzt.
+
 ## [0.4.0] - 2022-07-06
 
 ### Added
