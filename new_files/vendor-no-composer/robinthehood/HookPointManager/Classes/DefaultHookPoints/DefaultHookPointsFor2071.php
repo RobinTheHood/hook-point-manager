@@ -5,7 +5,7 @@ namespace RobinTheHood\HookPointManager\Classes\DefaultHookPoints;
 use RobinTheHood\HookPointManager\Classes\HookPointManager;
 
 /*
-    *** Default Hook Points for Modified 2.0.7.0 ***
+    *** Default Hook Points for Modified 2.0.7.1 ***
     You can add new hook points by making a pull request in https://github.com/RobinTheHood/hook-point-manager
 
     index   | description                                           | example value
@@ -18,11 +18,11 @@ use RobinTheHood\HookPointManager\Classes\HookPointManager;
     include | auto_include directory for the hook point files       | /includes/extra/hpm/create_account/prepare_data/
  */
 
-class DefaultHookPointsFor2070
+class DefaultHookPointsFor2071
 {
     public function registerAll(): void
     {
-        $modifiedVersions = ['2.0.7.0'];
+        $modifiedVersions = ['2.0.7.1'];
 
         $hookPointManager = new HookPointManager();
 
@@ -34,8 +34,8 @@ class DefaultHookPointsFor2070
             'name' => 'hpm-default-create-account-prepare-data',
             'module' => 'robinthehood/hook-point-manager',
             'file' => '/create_account.php',
-            'hash' => 'd9221348e6076d94b8153ab91814ab6e',
-            'line' => 296,
+            'hash' => '16ef2e7c40001222d3054c876e28dba2',
+            'line' => 280,
             'include' => '/includes/extra/hpm/create_account/prepare_data/'
         ], $modifiedVersions);
 
@@ -47,8 +47,8 @@ class DefaultHookPointsFor2070
             'name' => 'hpm-default-create-guest-account-prepare-data',
             'module' => 'robinthehood/hook-point-manager',
             'file' => '/create_guest_account.php',
-            'hash' => 'e15a9fd4ae76cd6ffcf07c6285b90701',
-            'line' => 260,
+            'hash' => 'eea031e80a28102387e6604720c64185',
+            'line' => 242,
             'include' => '/includes/extra/hpm/create_guest_account/prepare_data/'
         ], $modifiedVersions);
 
@@ -84,7 +84,7 @@ class DefaultHookPointsFor2070
             'module' => 'robinthehood/hook-point-manager',
             'file' => '/admin/includes/modules/new_product.php',
             'hash' => 'c0464372ec54c35c060b0d5784551007',
-            'line' => 259,
+            'line' => 258,
             'include' => '/admin/includes/extra/hpm/new_product/buttons/'
         ], $modifiedVersions);
 
@@ -95,7 +95,7 @@ class DefaultHookPointsFor2070
             'name' => 'hpm-default-autocomplete-prepare-sql',
             'module' => 'robinthehood/hook-point-manager',
             'file' => '/api/autocomplete/autocomplete.php',
-            'hash' => '5b4b9cd13d5bd7aa31b268548cc0259e',
+            'hash' => '850d2e0e8afde3c5063781f0eef6b2cb',
             'line' => 79,
             'include' => '/includes/extra/hpm/api/autocomplete/prepare_sql/'
         ], $modifiedVersions);
