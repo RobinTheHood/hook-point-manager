@@ -190,7 +190,7 @@ class HookPointManager
     {
         $name = $hookPoint['name'] ?? 'unknown-hook-point-name';
         $module = $hookPoint['module'] ?? 'unknown-hook-point-module';
-        $includePath = $hookPoint['include'] ?? '/includes/etra/hpm/unknown_hook_point/';
+        $includePath = $hookPoint['include'] ?? '/includes/etxra/hpm/unknown_hook_point/';
 
         $code = "/* *** robinthehood/hook-point-manager START ***" . "\n";
         $code .= " * This is a automatically generated file with new hook points." . "\n";
